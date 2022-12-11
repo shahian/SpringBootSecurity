@@ -4,6 +4,7 @@ import com.shahian.springBootSecurity.model.User;
 import com.shahian.springBootSecurity.servic.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,12 +24,14 @@ public class UserController {
     }
 
     @GetMapping("/v1/getAll")
+
     public ResponseEntity<?> getAll() {
         List<User> allPerson = userService.getAllUser();
         return ResponseEntity.status(HttpStatus.OK).body(allPerson);
     }
 
     @GetMapping("/v1/getById")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<?> getById(@RequestParam Long id) {
         User Person = userService.getUserById(id);
         return ResponseEntity.status(HttpStatus.OK).body(Person);

@@ -5,13 +5,13 @@ import com.shahian.springBootSecurity.model.Role;
 import com.shahian.springBootSecurity.model.User;
 import com.shahian.springBootSecurity.repository.RoleRepository;
 import com.shahian.springBootSecurity.repository.UserRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Collection;

@@ -51,9 +51,10 @@ public class JwtTokenUtil {
         }
         return false;
     }
-public String getUserName(String token){
-    String subject = JWT.decode(token).getSubject();
-    return subject.split(",")[1];
 
-}
+    public String getUserName(String token) {
+        String subject = JWT.decode(token).getSubject();
+        return subject.split(",")[1];
+
+    }
 }

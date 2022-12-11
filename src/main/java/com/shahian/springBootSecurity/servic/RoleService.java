@@ -2,8 +2,8 @@ package com.shahian.springBootSecurity.servic;
 
 import com.shahian.springBootSecurity.model.Role;
 import com.shahian.springBootSecurity.repository.RoleRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 

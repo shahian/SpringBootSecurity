@@ -2,8 +2,8 @@ package com.shahian.springBootSecurity.servic;
 
 import com.shahian.springBootSecurity.model.Book;
 import com.shahian.springBootSecurity.repository.BookRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 @Service

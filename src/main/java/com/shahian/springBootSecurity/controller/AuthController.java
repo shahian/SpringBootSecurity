@@ -5,7 +5,6 @@ import com.shahian.springBootSecurity.model.RegistrationDTO;
 import com.shahian.springBootSecurity.model.User;
 import com.shahian.springBootSecurity.security.JwtTokenUtil;
 import com.shahian.springBootSecurity.servic.UserService;
-import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
