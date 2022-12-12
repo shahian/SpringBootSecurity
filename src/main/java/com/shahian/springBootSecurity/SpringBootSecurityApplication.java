@@ -29,17 +29,18 @@ public class SpringBootSecurityApplication {
     @Bean
     CommandLineRunner run(UserService userService, RoleService roleService) {
         return args -> {
-
-            roleService.addRole(Role.builder().name(Role.ROLE_ADMIN).build());
-            roleService.addRole(Role.builder().name(Role.ROLE_USER).build());
-            Role roleAdmin = roleService.getRoleByName(Role.ROLE_ADMIN);
-            Role roleUser = roleService.getRoleByName(Role.ROLE_USER);
-            List<Role> roles = new ArrayList<>();
-            List<Role> roles2 = new ArrayList<>();
-            roles.add(roleAdmin);
-            roles2.add(roleUser);
-            userService.registration(new RegistrationDTO("hamidreza", "shahian", 37, "shahian", "123456"), roles);
-            userService.registration(new RegistrationDTO("dayan", "shahian", 1, "dayan", "654321"), roles2);
+            if (roleService.getAllRole().isEmpty()) {
+                roleService.addRole(Role.builder().name(Role.ROLE_ADMIN).build());
+                roleService.addRole(Role.builder().name(Role.ROLE_USER).build());
+                Role roleAdmin = roleService.getRoleByName(Role.ROLE_ADMIN);
+                Role roleUser = roleService.getRoleByName(Role.ROLE_USER);
+                List<Role> roles = new ArrayList<>();
+                List<Role> roles2 = new ArrayList<>();
+                roles.add(roleAdmin);
+                roles2.add(roleUser);
+                userService.registration(new RegistrationDTO("hamidreza", "shahian", 37, "shahian", "123456"), roles);
+                userService.registration(new RegistrationDTO("dayan", "shahian", 1, "dayan", "654321"), roles2);
+            }
         };
     }
 }
