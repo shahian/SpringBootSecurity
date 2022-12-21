@@ -24,7 +24,7 @@ public class UserController {
     }
 
     @GetMapping("/v1/getAll")
-
+    @PreAuthorize("hasRole('ROLE_USER')")
     public ResponseEntity<?> getAll() {
         List<User> allPerson = userService.getAllUser();
         return ResponseEntity.status(HttpStatus.OK).body(allPerson);

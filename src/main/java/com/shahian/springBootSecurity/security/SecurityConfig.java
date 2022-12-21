@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     JwtAuthenticationFilter jwtAuthenticationFilter;
@@ -39,8 +41,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and();
         http.authorizeRequests()
                 .antMatchers("/api/auth/**").permitAll()
-                .antMatchers("/api/User/v1/getAll").hasAuthority(Role.ROLE_ADMIN)
-                .antMatchers("/api/User/v1/getById").hasAuthority(Role.ROLE_USER)
+//                .antMatchers("/api/User/v1/getAll").hasAuthority(Role.ROLE_ADMIN)
+//                .antMatchers("/api/User/v1/getById").hasAuthority(Role.ROLE_USER)
                 .anyRequest().authenticated();
         http.addFilterBefore(jwtAuthenticationFilter,UsernamePasswordAuthenticationFilter.class);
     }
