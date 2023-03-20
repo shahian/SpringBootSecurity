@@ -4,7 +4,8 @@ Spring Boot Security is a framework for implementing security in a Spring Boot a
 
  ## Table of Contents
 1. [WebSecurityConfigurerAdapter](#webSecurityConfigurerAdapter)
-2. [JWT](#JWT)
+2. [Configure method](#configureMethod)
+3. [JWT](#JWT)
 
 
 ### webSecurityConfigurerAdapter
@@ -14,6 +15,11 @@ Spring Security provides an implementation of the WebSecurityConfigurerAdapter c
 The WebSecurityConfigurerAdapter class allows for configuration of authentication and authorization for specific URLs. It also provides methods for configuring roles and access control for specific URLs. The WebSecurityConfigurerAdapter class can be used to protect against cross-site request forgery (CSRF) attacks by configuring CsrfTokenRepository. It also provides methods for configuring encryption, such as HTTPS and TLS.
 
 The WebSecurityConfigurerAdapter class can be used to provide additional security features such as filtering, session management, and access control. It also provides methods for configuring authentication providers and authorization constraints. Furthermore, the WebSecurityConfigurerAdapter class can be used to provide custom security rules for specific URLs.
+
+### configureMethod
+***
+The configure(WebSecurity) method in the WebSecurityConfigurerAdapter class is used to specify the security configuration for the application. The configure(WebSecurity) method can be overridden in order to customize the security configuration as needed. This allows developers to specify custom authentication providers, configure access control rules, and more. By overriding the configure(WebSecurity) method, developers can tailor security configuration to the specific needs of the application.
+
 
 ### JWT
 ***
