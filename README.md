@@ -6,6 +6,7 @@ Spring Boot Security is a framework for implementing security in a Spring Boot a
 1. [WebSecurityConfigurerAdapter](#webSecurityConfigurerAdapter)
 2. [Configure method](#configureMethod)
 3. [JWT](#JWT)
+4. [JWTConfiguration](#JWTConfiguration)
 
 
 ### webSecurityConfigurerAdapter
@@ -25,7 +26,27 @@ The configure(WebSecurity) method in the WebSecurityConfigurerAdapter class is u
 ***
 JSON Web Token (JWT) is an open standard (RFC 7519) that defines a compact and self-contained way for securely transmitting information between parties as a JSON object. In Spring Boot applications, JWT is used to secure communication between client and server by using digitally signed tokens. The token is sent as an Authorization header in each request, and is used to authenticate the user and authorize them to access certain API endpoints.
 
+### JWTConfiguration
+***
+To use JWT for authentication in a Java Spring Boot application, you will need to build a custom authentication filter to validate the token. The filter should check for a valid JWT in the Authorization header of the request and extract the user information from the JWT. The user information should then be used to set the SecurityContext for the request. 
 
+The following steps may help you to implement this:
+
+1. Create a custom authentication filter class that will extend the OncePerRequestFilter class. 
+
+2. In the doFilterInternal() method of the filter, check for a valid JWT in the Authorization header of the request.
+
+3. If the token is valid, parse the JWT and extract the user information.
+
+4. Create an Authentication object with the user information and set it in the SecurityContext for the request.
+
+5. Return the response with a successful authentication status.
+
+6. If the token is not valid, return an appropriate status code.
+
+7. Configure the custom authentication filter in the application configuration.
+
+You may also need to implement other features such as token refresh, token revocation, etc.
   <!-- 
   ## Table of Contents
 1. [General Info](#general-info)
