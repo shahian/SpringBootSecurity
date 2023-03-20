@@ -4,7 +4,7 @@ Spring Boot Security is a framework for implementing security in a Spring Boot a
 
  ## Table of Contents
 1. [WebSecurityConfigurerAdapter](#webSecurityConfigurerAdapter)
-2. [Comparator](#comparator)
+2. [JWT](#JWT)
 
 
 ### webSecurityConfigurerAdapter
@@ -15,39 +15,10 @@ The WebSecurityConfigurerAdapter class allows for configuration of authenticatio
 
 The WebSecurityConfigurerAdapter class can be used to provide additional security features such as filtering, session management, and access control. It also provides methods for configuring authentication providers and authorization constraints. Furthermore, the WebSecurityConfigurerAdapter class can be used to provide custom security rules for specific URLs.
 
-  <!-- 
-Here is an example of a Person class that implements the Comparable interface to sort instances of the class based on their age: 
-
-public class Person implements Comparable<Person> {
-    private String name;
-    private int age;
-    // constructor, getters, setters
-    @Override
-    public int compareTo(Person other) {
-        return Integer.compare(this.age, other.age);
-    }
-}
-The compareTo() method compares two Person objects based on their age field.
--->
-
-### comparator
+### JWT
 ***
-Comparator, on the other hand, is an interface that defines a way to compare two objects that are not Comparable or to override the natural order defined by Comparable. The Comparator interface has a method called compare(), which takes two objects of a given type and returns a negative integer, zero, or a positive integer depending on whether the first object is less than, equal to, or greater than the second object, respectively.
-<!--
-Here is an example of a PersonAgeComparator class that implements the Comparator interface to sort instances of the Person class based on their age:
-</br>
+JSON Web Token (JWT) is an open standard (RFC 7519) that defines a compact and self-contained way for securely transmitting information between parties as a JSON object. In Spring Boot applications, JWT is used to secure communication between client and server by using digitally signed tokens. The token is sent as an Authorization header in each request, and is used to authenticate the user and authorize them to access certain API endpoints.
 
-public class PersonAgeComparator implements Comparator<Person> {
-    @Override
-    public int compare(Person p1, Person p2) {
-        return Integer.compare(p1.getAge(), p2.getAge());
-    }
-}
-
-
-The compare() method compares two Person objects based on their age field.
--->
-To use these interfaces for sorting, you can call the sort() method on an array or list and pass either a Comparator instance or the Comparable implementation of the objects in the collection as an argument.
 
   <!-- 
   ## Table of Contents
