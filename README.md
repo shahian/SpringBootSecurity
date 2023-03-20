@@ -3,13 +3,18 @@
 Spring Boot Security is a framework for implementing security in a Spring Boot application. It provides a comprehensive security solution for securing both the frontend and backend of an application. It has a wide range of features such as authentication, authorization, role-based access control, password hashing, encryption, and more. It also provides a secure way to store and access user credentials. Spring Boot Security is easy to configure and provides a secure environment for applications.
 
  ## Table of Contents
-1. [Comparable](#comparable)
+1. [WebSecurityConfigurerAdapter](#webSecurityConfigurerAdapter)
 2. [Comparator](#comparator)
 
 
-### comparable
+### webSecurityConfigurerAdapter
 ***
-Comparable is an interface that is implemented by a class to indicate that its instances are "naturally" ordered. The Comparable interface contains a single method called compareTo(), which compares the object with another object of the same type and returns a negative integer, zero, or a positive integer depending on whether the object is less than, equal to, or greater than the other object, respectively.
+Spring Security provides an implementation of the WebSecurityConfigurerAdapter class that can be used to configure web-based security for specific http requests. This class is used to apply security controls to specific http requests based on the specified URL patterns. The WebSecurityConfigurerAdapter class provides methods to configure authentication and authorization for web applications.
+
+The WebSecurityConfigurerAdapter class allows for configuration of authentication and authorization for specific URLs. It also provides methods for configuring roles and access control for specific URLs. The WebSecurityConfigurerAdapter class can be used to protect against cross-site request forgery (CSRF) attacks by configuring CsrfTokenRepository. It also provides methods for configuring encryption, such as HTTPS and TLS.
+
+The WebSecurityConfigurerAdapter class can be used to provide additional security features such as filtering, session management, and access control. It also provides methods for configuring authentication providers and authorization constraints. Furthermore, the WebSecurityConfigurerAdapter class can be used to provide custom security rules for specific URLs.
+
   <!-- 
 Here is an example of a Person class that implements the Comparable interface to sort instances of the class based on their age: 
 
