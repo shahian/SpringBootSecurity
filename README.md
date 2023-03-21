@@ -89,6 +89,37 @@ http = http.cors().and().csrf().disable();
 
 The above code disables Cross-Origin Resource Sharing (CORS) and Cross-Site Request Forgery (CSRF) protections. CORS is a security measure that allows a web page to make requests to a different domain, while CSRF is a technique used by attackers to make requests without the user’s knowledge. Disabling these measures is not recommended unless absolutely necessary, as it may open the application up to potential security vulnerabilities.
 
+```
+http = http
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS
+
+```
+
+This code configures the HTTP session management to ensure that session creation is stateless. This means that a new session will not be created for each request, but instead, the same session will be used for all requests. This helps to reduce the amount of data stored in memory and improves the performance of the application.
+
+```
+ http = http
+                .exceptionHandling()
+                .authenticationEntryPoint(
+                        ((request, response, authException) -> {
+                            System.out.println("Unauthorized request");
+                            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, authException.getMessage());
+                        })
+                )
+                .and();
+```
+This is configuring exception handling in an HTTP request. It is setting an authenticationEntryPoint which is a lambda expression that is executed when an unauthorized request is made. This lambda expression prints out an "Unauthorized request" message and then sends an error response to the client, with the status code of 401 (UNAUTHORIZED) and the message of the authentication exception.
+
+```
+        http.authorizeRequests()
+                .antMatchers("/api/auth/**").permitAll()
+                .antMatchers("/api/User/v1/getAll").hasAuthority(Role.ROLE_ADMIN)
+                .antMatchers("/api/User/v1/getById").hasAuthority(Role.ROLE_USER)
+                .anyRequest().authenticated();
+        http.addFilterBefore(jwtAuthenticationFilter,UsernamePasswordAuthenticationFilter.class);
+ ```
+ This code is used to configure an authorization filter for an application. It uses the antMatchers method to specify which API endpoints are allowed for certain roles. In this case, the "/api/auth/" endpoint is allowed for all users, while the "/api/User/v1/getAll" and "/api/User/v1/getById" endpoints are only allowed for users with the Role.ROLEADMIN and Role.ROLEUSER roles, respectively. Finally, the code adds the jwtAuthenticationFilter before the UsernamePasswordAuthenticationFilter, ensuring that all requests are authenticated.
   <!-- 
   ## Table of Contents
 1. [General Info](#general-info)
