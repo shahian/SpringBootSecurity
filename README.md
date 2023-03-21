@@ -70,8 +70,6 @@ You may also need to implement other features such as token refresh, token revoc
                 .and();
         http.authorizeRequests()
                 .antMatchers("/api/auth/**").permitAll()
-//                .antMatchers("/api/User/v1/getAll").hasAuthority(Role.ROLE_ADMIN)
-//                .antMatchers("/api/User/v1/getById").hasAuthority(Role.ROLE_USER)
                 .anyRequest().authenticated();
         http.addFilterBefore(jwtAuthenticationFilter,UsernamePasswordAuthenticationFilter.class);
     }
