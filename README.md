@@ -74,6 +74,21 @@ You may also need to implement other features such as token refresh, token revoc
         http.addFilterBefore(jwtAuthenticationFilter,UsernamePasswordAuthenticationFilter.class);
     }
 ```
+This code is a part of a configuration class for Spring security. It configures the HttpSecurity object, which is responsible for setting up the security rules for the application. 
+
+The code disables Cross-Site Request Forgery (CSRF) protection as well as sets the session creation policy to STATELESS, which means that no session is stored in the server for the application. 
+
+It also sets an authentication entry point, which is triggered when an unauthorized request is made. 
+
+Finally, it defines which urls are allowed without authentication (in this case /api/auth/) and which requires authentication (any other request). It also adds the jwtAuthenticationFilter filter before the UsernamePasswordAuthenticationFilter filter.
+
+```
+http = http.cors().and().csrf().disable();
+
+```
+
+The above code disables Cross-Origin Resource Sharing (CORS) and Cross-Site Request Forgery (CSRF) protections. CORS is a security measure that allows a web page to make requests to a different domain, while CSRF is a technique used by attackers to make requests without the user’s knowledge. Disabling these measures is not recommended unless absolutely necessary, as it may open the application up to potential security vulnerabilities.
+
   <!-- 
   ## Table of Contents
 1. [General Info](#general-info)
