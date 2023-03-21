@@ -7,6 +7,7 @@ Spring Boot Security is a framework for implementing security in a Spring Boot a
 2. [Configure method](#configureMethod)
 3. [JWT](#JWT)
 4. [JWTConfiguration](#JWTConfiguration)
+5. [Explanations](#Explanations)
 
 
 ### webSecurityConfigurerAdapter
@@ -47,6 +48,34 @@ The following steps may help you to implement this:
 7. Configure the custom authentication filter in the application configuration.
 
 You may also need to implement other features such as token refresh, token revocation, etc.
+
+### Explanations
+```
+ @Override
+    public void configure(HttpSecurity http) throws Exception {
+        http = http.cors().and().csrf().disable();
+
+        http = http
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and();
+        http = http
+                .exceptionHandling()
+                .authenticationEntryPoint(
+                        ((request, response, authException) -> {
+                            System.out.println("Unauthorized request");
+                            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, authException.getMessage());
+                        })
+                )
+                .and();
+        http.authorizeRequests()
+                .antMatchers("/api/auth/**").permitAll()
+//                .antMatchers("/api/User/v1/getAll").hasAuthority(Role.ROLE_ADMIN)
+//                .antMatchers("/api/User/v1/getById").hasAuthority(Role.ROLE_USER)
+                .anyRequest().authenticated();
+        http.addFilterBefore(jwtAuthenticationFilter,UsernamePasswordAuthenticationFilter.class);
+    }
+```
   <!-- 
   ## Table of Contents
 1. [General Info](#general-info)
